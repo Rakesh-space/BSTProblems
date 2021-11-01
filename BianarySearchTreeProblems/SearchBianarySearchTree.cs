@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace BianarySearchTreeProblems
 {
-    class SizeBianarySearchTree<T> where T : IComparable<T>
+    class SearchBianarySearchTree<T> where T : IComparable
     {
         public T NodeData
         {
             get;
             set;
         }
-        public SizeBianarySearchTree<T> LeftTree //Generic getter and setter method use here for LeftTree
+        public SearchBianarySearchTree<T> LeftTree //Generic getter and setter method use here for LeftTree
         {
             get;
             set;
         }
-        public SizeBianarySearchTree<T> RightTree //Generic getter and setter method use here for RightTree
+        public SearchBianarySearchTree<T> RightTree //Generic getter and setter method use here for RightTree
         {
             get;
             set;
         }
 
-        public SizeBianarySearchTree(T nodeData) //here Constructore user for initialize the instance vaiables
+        public SearchBianarySearchTree(T nodeData) //here Constructore user for initialize the instance vaiables
         {
             this.NodeData = nodeData;  //here node data assigned to instance variable
             this.LeftTree = null;  //here initialy Lefttree node is null
@@ -41,7 +41,7 @@ namespace BianarySearchTreeProblems
             {
                 if (this.LeftTree == null)  //here lefttree is null then assigned to newNode
                 {
-                    this.LeftTree = new SizeBianarySearchTree<T>(item);
+                    this.LeftTree = new SearchBianarySearchTree<T>(item);
                 }
                 else
                     this.LeftTree.Insert(item);  //here lefttree is not null then insert data
@@ -50,7 +50,7 @@ namespace BianarySearchTreeProblems
             {
                 if (this.RightTree == null) //here righttree is null then assigned to newNode
                 {
-                    this.RightTree = new SizeBianarySearchTree<T>(item);
+                    this.RightTree = new SearchBianarySearchTree<T>(item);
                 }
                 else
                     this.RightTree.Insert(item); //here righttree is not null then insert data
@@ -72,10 +72,35 @@ namespace BianarySearchTreeProblems
             }
         }
 
-        public void GetSize()
+        public void GetSize()  //Get size of tree
         {
             Console.WriteLine("Size" + " " + (1 + this.leftCount + this.rightCount));
         }
 
+        public bool IFExits(T element, SearchBianarySearchTree<T> Node)
+        {
+            if (Node == null) //node is null then false
+            {
+                return false;
+            }
+            if (Node.NodeData.Equals(element)) //both search ele find then return true "Equals Method"
+            {
+                Console.WriteLine("\n Fount the element in BST" + "" + Node.NodeData);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("\n Current Ele is {0} in BST", Node.NodeData);
+            }
+            if (element.CompareTo(Node.NodeData) < 0)  //CompareTo both ele 
+            {
+                IFExits(element, Node.LeftTree);     //insert at left tree           
+            }
+            if (element.CompareTo(Node.NodeData) > 0)  //CompareTo both ele 
+            {
+                IFExits(element, Node.RightTree);  //insert at right tree
+            }
+            return result;
+        }
     }
 }
