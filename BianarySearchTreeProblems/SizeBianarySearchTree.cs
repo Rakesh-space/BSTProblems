@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace BianarySearchTreeProblems
 {
-    class CreateBianarySearchTree<T> where T : IComparable<T>
+    class SizeBianarySearchTree<T> where T : IComparable<T>
     {
         public T NodeData
         {
             get;
             set;
         }
-        public CreateBianarySearchTree<T> LeftTree //Generic getter and setter method use here for LeftTree
+        public SizeBianarySearchTree<T> LeftTree //Generic getter and setter method use here for LeftTree
         {
             get;
             set;
         }
-        public CreateBianarySearchTree<T> RightTree //Generic getter and setter method use here for RightTree
+        public SizeBianarySearchTree<T> RightTree //Generic getter and setter method use here for RightTree
         {
             get;
             set;
         }
 
-        public CreateBianarySearchTree(T nodeData) //here Constructore user for initialize the instance vaiables
+        public SizeBianarySearchTree(T nodeData) //here Constructore user for initialize the instance vaiables
         {
             this.NodeData = nodeData;  //here node data assigned to instance variable
             this.LeftTree = null;  //here initialy Lefttree node is null
@@ -41,7 +41,7 @@ namespace BianarySearchTreeProblems
             {
                 if (this.LeftTree == null)  //here lefttree is null then assigned to newNode
                 {
-                    this.LeftTree = new CreateBianarySearchTree<T>(item);
+                    this.LeftTree = new SizeBianarySearchTree<T>(item);
                 }
                 else
                     this.LeftTree.Insert(item);  //here lefttree is not null then insert data
@@ -50,7 +50,7 @@ namespace BianarySearchTreeProblems
             {
                 if (this.RightTree == null) //here righttree is null then assigned to newNode
                 {
-                    this.RightTree = new CreateBianarySearchTree<T>(item);
+                    this.RightTree = new SizeBianarySearchTree<T>(item);
                 }
                 else
                     this.RightTree.Insert(item); //here righttree is not null then insert data
@@ -70,6 +70,11 @@ namespace BianarySearchTreeProblems
                 this.rightCount++;  //here Count right Node
                 this.RightTree.display();  //recursive call display method
             }
+        }
+
+        public void GetSize()
+        {
+            Console.WriteLine("Size" + " " + (1 + this.leftCount + this.rightCount));
         }
 
     }
