@@ -6,7 +6,10 @@ namespace BianarySearchTreeProblems
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\n Welcome to bianary search tree...");
+            CreateBianarySearchTree<int> bianarySearchTree = new CreateBianarySearchTree<int>(56);
+            bianarySearchTree.Insert(30);
+            bianarySearchTree.Insert(70);
+            bianarySearchTree.display();
         }
     }
 }
